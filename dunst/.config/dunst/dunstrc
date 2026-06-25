@@ -1,0 +1,47 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+
+[global]
+    font = FiraCode Nerd Font 10
+    frame_color = "#81A1C1"
+    separator_color = "#4C566A"
+    corner_radius = 8
+    transparency = 10
+    padding = 10
+    horizontal_padding = 10
+    line_height = 1
+    max_icon_size = 48
+    icon_position = left
+    enable_markup = yes
+    follow = keyboard
+    alignment = left
+    browser = /usr/bin/xdg-open
+    monitor = 0
+    word_wrap = yes
+    format = "<b>%a</b>\n<span size='medium'>%s</span>"
+    show_age_threshold = 60
+    indicate_hidden = yes
+    sticky_history = yes
+
+# Icon theme and paths
+icon_theme = "Papirus"
+icon_path = /usr/share/icons/Papirus-Dark/48x48/status:/usr/share/icons/Papirus-Dark/48x48/devices:/usr/share/icons/Papirus-Dark/48x48/actions
+
+[urgency_low]
+    background = "#2E3440"
+    foreground = "#A3BE8C"
+    frame_color = "#3B4252"
+
+[urgency_normal]
+    background = "#2E3440"
+    foreground = "#EBCB8B"
+    frame_color = "#5E81AC"
+
+[urgency_critical]
+    background = "#2E3440"
+    foreground = "#BF616A"
+    frame_color = "#BF616A"
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+h

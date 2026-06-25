@@ -1,0 +1,38 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+#
+# Nord-ish theme + sane defaults for GNU nano (>= 9.0).
+#
+# nano takes 3-digit hex (#RGB) and snaps each to the nearest palette colour,
+# so these approximate the Nord palette rather than matching it exactly:
+#   bg #2E3440 (#233)  fg #ECEFF4 (#eef)  polar-light #3B4252 (#345)
+#   frost #88C0D0 (#8cd) / #81A1C1 (#8ac) / #5E81AC (#58a)
+#   green #A3BE8C (#ab8)  yellow #EBCB8B (#ec8)  red #BF616A (#b66)
+#
+# Format is "set <slot> [fg],[bg]".
+
+# --- interface colours ---
+set titlecolor      #eef,#58a
+set promptcolor     #eef,#58a
+set statuscolor     #233,#8cd
+set errorcolor      #eef,#b66
+set selectedcolor   #233,#8ac
+set spotlightcolor  #233,#ec8
+set numbercolor     #58a
+set scrollercolor   #8cd
+set stripecolor     ,#345
+set keycolor        #8cd
+set functioncolor   #8ac
+
+# --- behaviour ---
+set linenumbers
+set softwrap
+set tabsize 4
+set tabstospaces
+set autoindent
+set constantshow
+set mouse
+set zap
+
+# --- syntax highlighting (these files ship WITH nano; no extra package) ---
+include "/usr/share/nano/*.nanorc"
+include "/usr/share/nano/extra/*.nanorc"

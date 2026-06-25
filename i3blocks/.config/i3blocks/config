@@ -1,0 +1,74 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+#
+# i3blocks configuration file (Nord theme, with padding + flat colours)
+
+# Nord Color Palette Reference:
+# Polar Night:  #2E3440 #3B4252 #434C5E #4C566A
+# Snow Storm:   #D8DEE9 #E5E9F0 #ECEFF4
+# Frost:        #8FBCBB #88C0D0 #81A1C1 #5E81AC
+# Aurora:       #BF616A #D08770 #EBCB8B #A3BE8C #B48EAD
+
+separator=false
+separator_block_width=15
+markup=pango
+
+[netdetail]
+label=
+command=~/.local/bin/netdetail-rotating.sh
+interval=2
+markup=pango
+
+[auth]
+label=
+command=~/.local/bin/authwatch.sh
+interval=10
+markup=pango
+
+[wireless]
+label= 
+command=~/.local/bin/wireless-status.sh
+interval=10
+color=#88C0D0  # Frost Blue
+
+[ethernet]
+label= 
+command=~/.local/bin/ethernet-status.sh
+interval=10
+color=#5E81AC  # Deep Blue
+
+[vpn]
+label= 
+command=~/.local/bin/vpn-status.sh
+interval=10
+color=#A3BE8C  # Aurora Green
+
+[memory]
+label= 
+command=free -h | awk '/Mem/ {print $3 "/" $2}'
+interval=10
+color=#B48EAD  # Aurora Purple
+
+[volume]
+label= 
+command=~/.local/bin/volume-status.sh
+interval=5
+signal=1
+color=#EBCB8B  # Aurora Yellow
+
+[battery]
+label=
+command=~/.local/bin/battery-status.sh
+interval=2
+markup=pango
+
+[pomodoro]
+command=~/.local/bin/pomodoro-status.sh
+interval=1
+signal=2
+color=#BF616A  # Aurora Red
+
+[time]
+label= 
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+color=#ECEFF4  # Snow White

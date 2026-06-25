@@ -1,0 +1,40 @@
+{
+  // Na Fir-Chlis – a Nord i3wm theme · lundie.io
+  // fastfetch, themed to the Nord frost palette. The colour names below are
+  // ANSI names that resolve against the terminal's Nord palette (the alacritty
+  // nord theme), so the keys and title render in Nord blue/cyan – matching the
+  // bar, dunst and wallpaper – rather than fastfetch's defaults.
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "padding": {
+      "top": 1,
+      "right": 3
+    }
+  },
+  "display": {
+    "color": {
+      "keys": "blue",
+      "title": "cyan"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    "wm",
+    "terminal",
+    "cpu",
+    "gpu",
+    "memory",
+    "disk",
+    "battery",
+    "break",
+    "colors"
+  ]
+}

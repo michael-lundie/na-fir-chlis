@@ -1,0 +1,212 @@
+{
+  "__meta": "Na Fir-Chlis – a Nord i3wm theme · lundie.io",
+  "document": {
+    "block_prefix": "\n",
+    "block_suffix": "\n",
+    "color": "#D8DEE9",
+    "margin": 2
+  },
+  "block_quote": {
+    "color": "#81A1C1",
+    "italic": true,
+    "indent": 1,
+    "indent_token": "│ "
+  },
+  "paragraph": {},
+  "list": {
+    "level_indent": 2
+  },
+  "heading": {
+    "block_suffix": "\n",
+    "color": "#88C0D0",
+    "bold": true
+  },
+  "h1": {
+    "prefix": " ",
+    "suffix": " ",
+    "color": "#ECEFF4",
+    "background_color": "#5E81AC",
+    "bold": true
+  },
+  "h2": {
+    "prefix": "## ",
+    "color": "#88C0D0"
+  },
+  "h3": {
+    "prefix": "### ",
+    "color": "#8FBCBB"
+  },
+  "h4": {
+    "prefix": "#### ",
+    "color": "#81A1C1"
+  },
+  "h5": {
+    "prefix": "##### ",
+    "color": "#5E81AC"
+  },
+  "h6": {
+    "prefix": "###### ",
+    "color": "#616E88",
+    "bold": false
+  },
+  "text": {},
+  "strikethrough": {
+    "crossed_out": true
+  },
+  "emph": {
+    "italic": true
+  },
+  "strong": {
+    "bold": true
+  },
+  "hr": {
+    "color": "#4C566A",
+    "format": "\n──────────────────────────────────────\n"
+  },
+  "item": {
+    "block_prefix": "• "
+  },
+  "enumeration": {
+    "block_prefix": ". "
+  },
+  "task": {
+    "ticked": "[✓] ",
+    "unticked": "[ ] "
+  },
+  "link": {
+    "color": "#88C0D0",
+    "underline": true
+  },
+  "link_text": {
+    "color": "#8FBCBB",
+    "bold": true
+  },
+  "image": {
+    "color": "#B48EAD",
+    "underline": true
+  },
+  "image_text": {
+    "color": "#616E88",
+    "format": "Image: {{.text}} →"
+  },
+  "code": {
+    "prefix": " ",
+    "suffix": " ",
+    "color": "#EBCB8B",
+    "background_color": "#3B4252"
+  },
+  "code_block": {
+    "color": "#D8DEE9",
+    "margin": 2,
+    "chroma": {
+      "text": {
+        "color": "#D8DEE9"
+      },
+      "error": {
+        "color": "#ECEFF4",
+        "background_color": "#BF616A"
+      },
+      "comment": {
+        "color": "#616E88",
+        "italic": true
+      },
+      "comment_preproc": {
+        "color": "#5E81AC"
+      },
+      "keyword": {
+        "color": "#81A1C1"
+      },
+      "keyword_reserved": {
+        "color": "#81A1C1"
+      },
+      "keyword_namespace": {
+        "color": "#81A1C1"
+      },
+      "keyword_type": {
+        "color": "#8FBCBB"
+      },
+      "operator": {
+        "color": "#81A1C1"
+      },
+      "punctuation": {
+        "color": "#ECEFF4"
+      },
+      "name": {
+        "color": "#D8DEE9"
+      },
+      "name_builtin": {
+        "color": "#8FBCBB"
+      },
+      "name_tag": {
+        "color": "#81A1C1"
+      },
+      "name_attribute": {
+        "color": "#8FBCBB"
+      },
+      "name_class": {
+        "color": "#8FBCBB",
+        "bold": true
+      },
+      "name_constant": {
+        "color": "#D8DEE9"
+      },
+      "name_decorator": {
+        "color": "#D08770"
+      },
+      "name_exception": {
+        "color": "#BF616A"
+      },
+      "name_function": {
+        "color": "#88C0D0"
+      },
+      "name_other": {
+        "color": "#D8DEE9"
+      },
+      "literal": {
+        "color": "#B48EAD"
+      },
+      "literal_number": {
+        "color": "#B48EAD"
+      },
+      "literal_date": {
+        "color": "#B48EAD"
+      },
+      "literal_string": {
+        "color": "#A3BE8C"
+      },
+      "literal_string_escape": {
+        "color": "#EBCB8B"
+      },
+      "generic_deleted": {
+        "color": "#BF616A"
+      },
+      "generic_emph": {
+        "italic": true
+      },
+      "generic_inserted": {
+        "color": "#A3BE8C"
+      },
+      "generic_strong": {
+        "bold": true
+      },
+      "generic_subheading": {
+        "color": "#616E88"
+      },
+      "background": {
+        "background_color": "#2E3440"
+      }
+    }
+  },
+  "table": {
+    "center_separator": "┼",
+    "column_separator": "│",
+    "row_separator": "─"
+  },
+  "definition_list": {},
+  "definition_term": {},
+  "definition_description": {
+    "block_prefix": "\n🠶 "
+  },
+  "html_block": {},
+  "html_span": {}
+}

@@ -1,0 +1,23 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+#
+# Alacritty configuration (TOML version) – Nord theme.
+#
+# Per-machine settings (e.g. font size, which varies with monitor DPI) go in
+# ~/.config/alacritty-local.toml. That file is NOT tracked by this repo and
+# lives outside the stowed tree, so each machine keeps its own. It is imported
+# last; missing imports are skipped silently, so this is safe everywhere.
+# Font size is intentionally left unset here so the local file (or, failing
+# that, Alacritty's default) decides it.
+general.import = [
+  "~/.config/alacritty/nord.toml",
+  "~/.config/alacritty-local.toml",
+]
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+
+[window]
+opacity = 0.95
+padding = { x = 8, y = 8 }
+dynamic_padding = true
+

@@ -1,0 +1,204 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+
+set $mod Mod4
+
+# UI
+font pango:monospace 10
+
+default_border pixel 0
+default_floating_border pixel 0
+
+gaps inner 5
+gaps outer 5
+
+# Startup
+exec --no-startup-id dex --autostart --environment i3
+
+# Idle/lock: arm the X screensaver (5 min) so xss-lock has an idle event to
+# react to, then hand locking to betterlockscreen (blurred, dimmed, Nord).
+# --transfer-sleep-lock makes the lock appear before suspend, so the desktop
+# is never briefly visible on resume.
+
+exec --no-startup-id xset s 300 5
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen --lock dimblur
+exec --no-startup-id nm-applet
+
+# IBus (Japanese input) – only starts if installed (see install.sh --jp)
+
+exec --no-startup-id sh -c 'command -v ibus-daemon >/dev/null 2>&1 && ibus-daemon -drx'
+exec_always --no-startup-id ~/.local/bin/i3-workspace-outputs.sh
+
+# Wallpaper: a per-machine choice (~/.fehbg, written by `feh --bg-*`) wins;
+# otherwise fall back to the shipped default – the nord0 cut of "Escape". The
+# default is found relative to wherever the repo was cloned (via this config's own
+# symlink); set DOTFILES_WALLPAPER to override, or swap nord0 → nord1/2/3 for the
+# lighter Polar Night grounds. Both paths no-op silently if absent. See README.
+
+exec_always --no-startup-id sh -c 'cfg="$(readlink -f ~/.config/i3/config)"; repo="${cfg%/i3/.config/i3/config}"; [ -f ~/.fehbg ] && ~/.fehbg || feh --bg-fill "${DOTFILES_WALLPAPER:-$repo/wallpaper/nord-crewman-35-nord0.png}" 2>/dev/null'
+
+# Keep the betterlockscreen image in step with the wallpaper. The script reads
+# the current wallpaper (~/.fehbg, else the shipped default), re-bakes the lock
+# cache only when it actually changed, and no-ops if betterlockscreen is absent.
+
+exec_always --no-startup-id ~/.local/bin/betterlockscreen-sync.sh
+
+# Media and system controls
+set $refresh_i3blocks pkill -RTMIN+1 i3blocks
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3blocks
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3blocks
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && notify-send " Brightness" "$(brightnessctl get)%"
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && notify-send " Brightness" "$(brightnessctl get)%"
+
+# Window behaviour
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+# Launchers
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+q kill
+
+# Launcher menu: a Nord-themed dmenu. Vanilla dmenu has no padding option, so the
+# row height is driven by the font – a slightly larger FiraCode size than the bar
+# (10pt) gives the entries more breathing room. Colours match the bar and dunst:
+# nord0 ground, nord4 text, nord10 selection, nord6 selected text.
+set $menu dmenu_run -fn "FiraCode Nerd Font-12" -nb "#2E3440" -nf "#D8DEE9" -sb "#5E81AC" -sf "#ECEFF4"
+bindsym $mod+d exec --no-startup-id $menu
+
+# Focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Layout
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# Workspaces
+# Labels keep a leading number so `workspace number` matching, the $mod+N
+# bindings, and i3-workspace-outputs.sh (odd -> secondary, even -> primary)
+# all keep working. 2 and 10 use FiraCode Nerd Font glyphs (home / music).
+
+set $ws1 "1|www"
+set $ws2 "2|"
+set $ws3 "3|IDE"
+set $ws4 "4|IDE"
+set $ws5 "5|git"
+set $ws6 "6|www"
+set $ws7 "7|term"
+set $ws8 "8|term"
+set $ws9 "9|run"
+set $ws10 "10|"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Session
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize mode
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Custom workflows
+# Lock now (logic in lock.sh – keeps the semicolons and quotes out of i3's parser).
+bindsym $mod+Shift+x exec --no-startup-id ~/.local/bin/lock.sh
+
+# Sync the lock-screen image to the current wallpaper now (after a feh change).
+bindsym $mod+Shift+w exec --no-startup-id ~/.local/bin/betterlockscreen-sync.sh --force
+bindsym $mod+Shift+i exec --no-startup-id ibus engine xkb:jp:jpn:jpn && notify-send 'Input: Japanese'
+bindsym $mod+Shift+u exec --no-startup-id ibus engine xkb:us::eng && notify-send 'Input: English'
+
+# Defaults to my portfolio; replace with your own dashboard or web app.
+set $webapp_url https://lundie.io
+
+# Browser for the web-app launchers. The binary name doubles as the WM_CLASS
+# xdotool matches on. For a different browser set this and adjust the
+# new-window flag in webapp.sh (qutebrowser uses `--target window`).
+set $browser qutebrowser
+bindsym $mod+b exec --no-startup-id ~/.local/bin/webapp.sh fullscreen $browser $webapp_url
+bindsym $mod+c exec --no-startup-id ~/.local/bin/webapp.sh float $browser $webapp_url
+
+# Screenshots
+set $screenshot_dir ~/Pictures
+bindsym Print exec scrot $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
+bindsym Shift+Print exec scrot -s -f $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
+bindsym Ctrl+Print exec scrot -u $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
+bindsym Mod1+Print exec scrot -s -f $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
+
+# Bar
+bar {
+    status_command i3blocks
+    font pango:FiraCode Nerd Font 10
+    position bottom
+    tray_output primary
+
+    colors {
+        background #2E3440
+        statusline #ECEFF4
+        separator  #4C566A
+    }
+}

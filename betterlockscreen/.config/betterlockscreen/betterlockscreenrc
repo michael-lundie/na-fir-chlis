@@ -1,0 +1,43 @@
+# betterlockscreen configuration – Nord theme.
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+#
+# Colours are i3lock-color format: RRGGBBAA (hex, no leading #, trailing pair
+# is alpha). Palette: https://www.nordtheme.com/docs/colors-and-palettes
+#   nord0 2e3440  nord1 3b4252  nord3 4c566a  nord4 d8dee9  nord6 eceff4
+#   nord8 88c0d0 (frost)  nord11 bf616a (red)  nord14 a3be8c (green)
+
+# --- Effects -------------------------------------------------------------
+# `betterlockscreen -u <image>` pre-renders these; the i3 config locks with
+# `--lock dimblur`. The cache is re-baked automatically when the wallpaper
+# changes by ~/.local/bin/betterlockscreen-sync.sh (at i3 start and on
+# $mod+Shift+w), so there's normally no need to run -u by hand.
+display_on=0
+span_image=false
+blur_level=3
+dim_level=40
+quiet=true
+
+# --- Fonts + text --------------------------------------------------------
+font="FiraCode Nerd Font"
+loginbox=2e3440cc
+locktext="Type to unlock"
+time_format="%H:%M"
+
+# --- Ring + indicator (Nord) --------------------------------------------
+ringcolor=4c566aff          # idle ring        – nord3
+insidecolor=2e344000        # idle centre      – nord0, transparent
+separatorcolor=2e3440ff     # nord0
+ringvercolor=88c0d0ff       # verifying ring   – nord8
+insidevercolor=88c0d033     # verifying centre – nord8, faint
+ringwrongcolor=bf616aff     # wrong ring       – nord11
+insidewrongcolor=bf616a33   # wrong centre     – nord11, faint
+keyhlcolor=88c0d0ff         # keypress         – nord8
+bshlcolor=bf616aff          # backspace        – nord11
+
+# --- Text colours --------------------------------------------------------
+timecolor=eceff4ff          # clock            – nord6
+datecolor=d8dee9ff          # date             – nord4
+layoutcolor=d8dee9ff        # nord4
+verifcolor=88c0d0ff         # "verifying…"     – nord8
+wrongcolor=bf616aff         # wrong/greeter    – nord11
+greetercolor=eceff4ff       # nord6

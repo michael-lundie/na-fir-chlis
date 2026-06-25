@@ -1,0 +1,31 @@
+# Never commit secrets or credential stores (defensive denylist).
+# Nothing under these paths is tracked by this repo, but listed here so an
+# accidental `git add` of the wrong file is blocked.
+*.env
+.envrc
+*secret*
+*token*
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+**/wakatime.cfg
+
+# Local editor/agent state.
+.idea/
+.claude/
+.agents/
+.codex/
+*.save
+CONTINUATION.md
+__pycache__/
+*.py[cod]
+
+# Local pre-publish hygiene script (author tooling, not part of the theme).
+check.sh
+
+# qutebrowser writes runtime state (autoconfig.yml, history, sessions, cache)
+# into its config dir. If Stow folds the package into a symlink, that state
+# lands in the repo – track only the hand-written config.py.
+qutebrowser/.config/qutebrowser/*
+!qutebrowser/.config/qutebrowser/config.py

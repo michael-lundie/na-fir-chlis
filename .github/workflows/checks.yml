@@ -1,0 +1,66 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # shellcheck is pre-installed on the ubuntu-latest runner image.
+      - name: ShellCheck
+        run: |
+          shellcheck --version
+          find . -type f -name '*.sh' -not -path './.git/*' -print0 \
+            | sort -z | xargs -0 -r shellcheck
+
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install GNU Stow
+        run: sudo apt-get update && sudo apt-get install -y stow
+
+      - name: Stow into a throwaway HOME, verify, re-run, unstow
+        run: |
+          set -euo pipefail
+          FAKE_HOME="$(mktemp -d)"
+          echo ">> throwaway HOME: ${FAKE_HOME}"
+
+          # 1. Deploy every package. A renamed package dir or a Stow conflict
+          #    fails here.
+          HOME="${FAKE_HOME}" ./install.sh
+
+          # 2. Each target must be a symlink that actually resolves – a missing
+          #    or broken link is the failure we care about. Check a spread of
+          #    packages (config files in .config, a bin script, the .xinitrc).
+          assert_link() {
+            local path="${FAKE_HOME}/$1"
+            [[ -L "${path}" ]] || { echo "FAIL: ${path} is not a symlink"; exit 1; }
+            [[ -e "${path}" ]] || { echo "FAIL: ${path} is a broken symlink"; exit 1; }
+            echo "ok: $1 -> $(readlink "${path}")"
+          }
+          assert_link ".config/i3/config"
+          assert_link ".config/alacritty/alacritty.toml"
+          assert_link ".config/dunst/dunstrc"
+          assert_link ".local/bin/battery-status.sh"
+          assert_link ".xinitrc"
+
+          # 3. bin scripts must carry the execute bit – i3 and i3blocks run them
+          #    by path, so a lost +x silently breaks the bar.
+          [[ -x "${FAKE_HOME}/.local/bin/battery-status.sh" ]] \
+            || { echo "FAIL: .local/bin/battery-status.sh is not executable"; exit 1; }
+
+          # 4. Idempotent: a second run must succeed (install.sh re-stows).
+          HOME="${FAKE_HOME}" ./install.sh
+
+          # 5. Unstow removes only what it created.
+          HOME="${FAKE_HOME}" ./install.sh --unstow
+          [[ ! -e "${FAKE_HOME}/.config/i3/config" ]] \
+            || { echo "FAIL: --unstow left .config/i3/config behind"; exit 1; }
+
+          echo ">> install smoke test passed."

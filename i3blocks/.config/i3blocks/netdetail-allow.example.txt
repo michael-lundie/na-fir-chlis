@@ -1,0 +1,14 @@
+# netdetail allowlist (example)
+#
+# Copy this to  netdetail-allow.txt  in the same directory to activate it.
+# One entry per line. A peer is allowlisted (shown, but never flashes "NEW!")
+# when an entry matches:
+#   * the peer IP by PREFIX  -> "52.39." matches 52.39.76.165
+#   *                        -> a full IP matches exactly
+#   * the process name exactly -> "syncthing"
+# Lines starting with # and blank lines are ignored.
+#
+# Examples (commented out – uncomment / edit for your own setup):
+# 52.39.            # an AWS range you knowingly talk to
+# syncthing         # trust everything this process connects to
+# 1.1.1.1           # your DNS resolver

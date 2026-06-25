@@ -1,0 +1,18 @@
+# Na Fir-Chlis – a Nord i3wm theme · lundie.io
+#
+# glow – markdown reader configuration.
+#
+# The Nord colour scheme is supplied by the glamour stylesheet in this same
+# directory (nord.json), selected through the GLAMOUR_STYLE environment
+# variable exported in x/.xinitrc. Leaving `style` as "auto" here lets that
+# variable win, so every glamour-based tool – glow, gh, glab – renders Nord
+# from one source of truth.
+
+# style name or JSON path ("auto" defers to $GLAMOUR_STYLE)
+style: "auto"
+# mouse support (TUI-mode only)
+mouse: false
+# use pager to display markdown
+pager: false
+# word-wrap at width
+width: 80

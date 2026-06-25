@@ -1,0 +1,76 @@
+# Arch Linux dependencies for this i3 + Nord setup.
+# Install the official-repo packages with:  ./install.sh --deps
+# The installer filters comments and blank lines before calling pacman.
+#
+# AUR-only packages are listed at the bottom and must be installed with an
+# AUR helper (e.g. `yay -S <pkg>`), not pacman.
+
+## --- Window manager + bar ---
+# (Screen locking is handled by betterlockscreen – an AUR package, see below –
+#  which pulls in i3lock-color in place of plain i3lock.)
+i3-wm
+i3blocks
+i3status
+dmenu
+
+## --- Terminal + notifications ---
+alacritty
+dunst
+libnotify
+
+## --- Editor + markdown ---
+nano
+# glow renders markdown in the terminal; it reads the Nord glamour stylesheet
+# via the GLAMOUR_STYLE export in x/.xinitrc.
+glow
+
+## --- System info (Nord-themed fastfetch; see the fastfetch/ package) ---
+fastfetch
+
+## --- Browser (custom Super+b / Super+c web-app launchers) ---
+qutebrowser
+
+## --- Fonts + icons ---
+ttf-firacode-nerd
+papirus-icon-theme
+
+## --- Audio ---
+# The volume keybindings and volume-status.sh use `pactl`, which ships in
+# libpulse. That works against either backend, so pick whichever PulseAudio-
+# compatible server the machine already runs – `pulseaudio` or `pipewire-pulse`
+# (they conflict, so this file pins neither). libpulse is already present if
+# either is installed.
+libpulse
+
+## --- Dotfiles installer ---
+stow
+
+## --- i3 / script utilities ---
+brightnessctl
+scrot
+feh
+xdotool
+xorg-xinit
+xorg-xrandr
+xorg-xprop
+iw
+wireless_tools
+bc
+dex
+xss-lock
+network-manager-applet
+iproute2
+procps-ng
+
+## --- Japanese input (IBus + Mozc) ---
+# Opt-in, not installed by default. Run `./install.sh --jp` to add it.
+#   ibus        (official repos)
+#   ibus-mozc   (AUR; also pulls in `mozc`)
+
+# ----------------------------------------------------------------------------
+# AUR (install with `yay -S <pkg>` – NOT pacman):
+#   betterlockscreen  # blurred Nord lock screen; pulls in i3lock-color
+#                     # (replaces the official i3lock). Themed via
+#                     # ~/.config/betterlockscreen/betterlockscreenrc.
+#   nordvpn-bin        # required only by vpn-status.sh / netdetail VPN tag
+# ----------------------------------------------------------------------------
