@@ -2,7 +2,7 @@
 
 *Named for [na fir-chlis](https://gd.wikipedia.org/wiki/Fir_Chlis), the Gaelic "nimble men" – the Merry Dancers, the Scots Gaelic name for the aurora.*
 
-[![checks](https://img.shields.io/github/actions/workflow/status/michael-lundie/na-fir-chlis/checks.yml?style=for-the-badge&label=checks)](https://github.com/michael-lundie/na-fir-chlis/actions/workflows/checks.yml)
+[![checks](https://img.shields.io/github/actions/workflow/status/michael-lundie/na-fir-chlis/checks.yml?style=for-the-badge&label=checks&labelColor=2E3440)](https://github.com/michael-lundie/na-fir-chlis/actions/workflows/checks.yml)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-5E81AC?style=for-the-badge)](LICENSE)
 [![Art: CC BY-NC-ND 4.0](https://img.shields.io/badge/art-CC_BY--NC--ND_4.0-BF616A?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
