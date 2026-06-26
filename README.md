@@ -149,7 +149,7 @@ Two blocks are inline one-liners in the i3blocks config rather than scripts: mem
 
 i3blocks refresh signals: **RTMIN+1** = volume block, **RTMIN+2** = pomodoro block.
 
-Runtime state for the helper scripts defaults to `${XDG_RUNTIME_DIR:-/tmp}/dotfiles-i3blocks`.
+Runtime state for the helper scripts defaults to `${XDG_RUNTIME_DIR:-~/.cache}/dotfiles-i3blocks`.
 If you want to override that location, export `DOTFILES_RUNTIME_DIR` before starting i3.
 
 ### 🔒 Auth watch

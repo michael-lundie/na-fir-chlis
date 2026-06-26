@@ -18,7 +18,7 @@
 
 set -uo pipefail
 
-RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/dotfiles-i3blocks"
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.cache}/dotfiles-i3blocks"
 RUNTIME_DIR="${DOTFILES_RUNTIME_DIR:-${RUNTIME_DIR}}"
 readonly RUNTIME_DIR
 readonly PREV_FILE="${RUNTIME_DIR}/net_peers.txt"
@@ -98,6 +98,7 @@ is_allowed() {
 
 main() {
   mkdir -p "${RUNTIME_DIR}"
+  chmod 700 "${RUNTIME_DIR}"
   mkdir -p "$(dirname "${LOG_FILE}")"
 
   # --- VPN tag ---
@@ -187,6 +188,13 @@ main() {
 
   ip="${PEERS[${index}]}"
   proc="${PEER_PROC[${ip}]}"
+  # markup=pango: a process name is set by a local process (untrusted).
+  # Escape pango metacharacters before it reaches the bar text.
+  # NB: the \& is required – in bash 5.1+ a bare & in the replacement means
+  # "the matched text", which would corrupt the < and > escaping.
+  proc="${proc//&/\&amp;}"
+  proc="${proc//</\&lt;}"
+  proc="${proc//>/\&gt;}"
 
   local icon color tag
   if [[ "${alert_active}" == "yes" ]]; then
@@ -199,7 +207,7 @@ main() {
     tag=""
   fi
 
-  # e.g. "  brave → 52.39.76.165 (3) [VPN]"
+  # e.g. "  wave → 52.39.76.165 (3) [VPN]"
   emit "${icon}  ${proc} → ${ip} (${count})${tag}${vpn_tag}" "${color}"
 }
 

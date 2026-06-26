@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # Na Fir-Chlis – a Nord i3wm theme · lundie.io
 # Works on Arch Linux
+
 # Shows if there were any new failed sudo/ssh authentication attempts in the
 # last few minutes.
 
-RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}/dotfiles-i3blocks"
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-${HOME}/.cache}/dotfiles-i3blocks"
 RUNTIME_DIR="${DOTFILES_RUNTIME_DIR:-${RUNTIME_DIR}}"
+
+# Private dir (700): the fallback is no longer world-writable /tmp, and this
+# state can hold snippets of the auth journal (usernames, source IPs).
 mkdir -p "${RUNTIME_DIR}"
+chmod 700 "${RUNTIME_DIR}"
 
 readonly STATE_FILE="${RUNTIME_DIR}/auth_state"
 readonly LOG_FILE="${RUNTIME_DIR}/auth_latest"
