@@ -163,7 +163,7 @@ If you want to override that location, export `DOTFILES_RUNTIME_DIR` before star
 | ⚠️ `NEW auth fail` | red    | a new failure appeared since the last check                 |
 
 A failed SSH login from the network shows up here (it logs as a failed password), so a sudden red flag is worth a glance.
-But it's deliberately broad: your own mistyped `sudo` password trips it too, and it only scans the last 200 lines of the current boot's journal.
+But it's deliberately broad: your own mistyped `sudo` password trips it too, and it only scans the last ten minutes of the current boot's journal.
 Treat it as an at-a-glance awareness indicator, not intrusion detection.
 
 ### 🌐 Network monitor
