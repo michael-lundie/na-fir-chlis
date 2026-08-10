@@ -2,17 +2,19 @@
 
 Original artwork for the Na Fir-Chlis theme. Two paintings ship here, both recoloured to sit inside the Nord palette, and each carrying a small `lundie.io` wordmark.
 
+Files are named `<painting>-<variant>-<resolution>.png`. The variant axis differs by work – "Escape" varies by the Polar Night ground it sits on, "Earthrise" by palette depth – but the field order is the same, so the files group by painting and sort predictably.
+
 ## "Escape" (2023)
 
 My painting **"Escape"**, edited and recoloured for Nord.
 It ships in four variations, each grounded on a different Polar Night shade:
 
-| File                          | Ground | Hex       |
-|-------------------------------|--------|-----------|
-| `nord-crewman-35-nord0.png`   | nord0  | `#2E3440` |
-| `nord-crewman-35-nord1.png`   | nord1  | `#3B4252` |
-| `nord-crewman-35-nord2.png`   | nord2  | `#434C5E` |
-| `nord-crewman-35-nord3.png`   | nord3  | `#4C566A` |
+| File                       | Ground | Hex       |
+|----------------------------|--------|-----------|
+| `escape-nord0-1440p.png`   | nord0  | `#2E3440` |
+| `escape-nord1-1440p.png`   | nord1  | `#3B4252` |
+| `escape-nord2-1440p.png`   | nord2  | `#434C5E` |
+| `escape-nord3-1440p.png`   | nord3  | `#4C566A` |
 
 `nord0` is the shipped default – it matches the desktop and terminal background,
 so the gaps and borders melt into the art.
@@ -22,16 +24,16 @@ All four are 2560×1440 and flat-shaded, so they downscale cleanly to smaller sc
 
 ## "Earthrise"
 
-A crewman watching the Earth rise over the regolith. Unlike "Escape", it is a **full-bleed** composition – the art runs edge to edge, with no Polar Night ground behind it – so it varies by palette depth rather than by ground shade.
+Unlike "Escape", it is a **full-bleed** composition – the art runs edge to edge, with no Polar Night ground behind it – so it varies by palette depth rather than by ground shade.
 
 It ships as two cuts, each **rendered natively at two resolutions**:
 
-| File                                        | Palette    | Resolution  | Size   |
-|---------------------------------------------|------------|-------------|--------|
-| `nordx8-earthrise-crewman-1920x1080.png`    | 8 colours  | 1920×1080   | 73 KB  |
-| `nordx8-earthrise-crewman-2560x1440.png`    | 8 colours  | 2560×1440   | 182 KB |
-| `nordx16-earthrise-crewman-1920x1080.png`   | 16 colours | 1920×1080   | 87 KB  |
-| `nordx16-earthrise-crewman-2560x1440.png`   | 16 colours | 2560×1440   | 213 KB |
+| File                        | Palette    | Resolution  | Size   |
+|-----------------------------|------------|-------------|--------|
+| `earthrise-x08-1080p.png`   | 8 colours  | 1920×1080   | 73 KB  |
+| `earthrise-x08-1440p.png`   | 8 colours  | 2560×1440   | 182 KB |
+| `earthrise-x16-1080p.png`   | 16 colours | 1920×1080   | 87 KB  |
+| `earthrise-x16-1440p.png`   | 16 colours | 2560×1440   | 213 KB |
 
 The `x8` cut is restricted to black, `nord0`–`nord2` and four of the Snow Storm / Frost shades: a coarser, more visible dither. The `x16` cut opens up `nord3`, the Frost blues and small hits of the Aurora accents, holding a smoother tonal falloff in the sky.
 
@@ -41,7 +43,7 @@ The tone in these is carried by an ordered dither – a per-pixel pattern, not a
 On a 1920×1080 or 2560×1440 screen, `feh --bg-fill` maps the matching file 1:1 and the dither survives intact. On any other resolution, prefer:
 
 ```bash
-feh --bg-center /path/to/nordx16-earthrise-crewman-2560x1440.png
+feh --bg-center /path/to/earthrise-x16-1440p.png
 ```
 
 `--bg-center` places the image at native size without resampling, letting the surrounding desktop show through rather than smearing the pattern. Because the art is grounded in black and `nord0`, the join is close to invisible.

@@ -21,7 +21,7 @@
 # so this works wherever the repo was cloned. Override with DOTFILES_WALLPAPER.
 self="$(readlink -f "${BASH_SOURCE[0]}")"
 repo="${self%/bin/.local/bin/*}"
-default="${DOTFILES_WALLPAPER:-${repo}/wallpaper/nord-crewman-35-nord0.png}"
+default="${DOTFILES_WALLPAPER:-${repo}/wallpaper/escape-nord0-1440p.png}"
 readonly self repo default
 
 # notify <notify-send args...>

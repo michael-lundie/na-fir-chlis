@@ -34,7 +34,7 @@ exec_always --no-startup-id ~/.local/bin/i3-workspace-outputs.sh
 # symlink); set DOTFILES_WALLPAPER to override, or swap nord0 → nord1/2/3 for the
 # lighter Polar Night grounds. Both paths no-op silently if absent. See README.
 
-exec_always --no-startup-id sh -c 'cfg="$(readlink -f ~/.config/i3/config)"; repo="${cfg%/i3/.config/i3/config}"; [ -f ~/.fehbg ] && ~/.fehbg || feh --bg-fill "${DOTFILES_WALLPAPER:-$repo/wallpaper/nord-crewman-35-nord0.png}" 2>/dev/null'
+exec_always --no-startup-id sh -c 'cfg="$(readlink -f ~/.config/i3/config)"; repo="${cfg%/i3/.config/i3/config}"; [ -f ~/.fehbg ] && ~/.fehbg || feh --bg-fill "${DOTFILES_WALLPAPER:-$repo/wallpaper/escape-nord0-1440p.png}" 2>/dev/null'
 
 # Keep the betterlockscreen image in step with the wallpaper. The script reads
 # the current wallpaper (~/.fehbg, else the shipped default), re-bakes the lock
