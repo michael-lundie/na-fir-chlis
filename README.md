@@ -197,7 +197,9 @@ Nothing breaks if the file is missing – you only lose the per-machine size.
 
 **Wallpaper.** i3 doesn't set one; `feh` does. The default is my own painting, *"Escape"*, painted in 2023 and recoloured for Nord.
 It is shipped in four Polar Night grounds (`nord0`–`nord3`) in [`wallpaper/`](wallpaper/); the `nord0` cut applies on start, so a fresh clone looks complete out of the box.
-To use a lighter ground, or a different image entirely, on a given machine:
+A second painting, *"Earthrise"*, ships alongside it in 8- and 16-colour Nord cuts, each rendered natively at 1920×1080 and 2560×1440.
+Its tone is carried by an ordered dither, so it must be used at the resolution matching your screen – rescaling collapses the pattern. That's why the flat-shaded *"Escape"*, which downscales cleanly, stays the default; see [`wallpaper/README.md`](wallpaper/README.md).
+To use a lighter ground, either *"Earthrise"* cut, or a different image entirely, on a given machine:
 
 ```bash
 feh --bg-fill ~/Pictures/your-wallpaper.jpg   # also: --bg-scale / --bg-max / --bg-center
