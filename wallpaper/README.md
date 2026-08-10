@@ -22,7 +22,7 @@ i3 applies it on start automatically, resolved relative to wherever the repo was
 
 All four are 2560×1440 and flat-shaded, so they downscale cleanly to smaller screens. That tolerance is why "Escape" remains the shipped default rather than "Earthrise".
 
-## "Earthrise"
+## "Earthrise" (2022)
 
 Unlike "Escape", it is a **full-bleed** composition – the art runs edge to edge, with no Polar Night ground behind it – so it varies by palette depth rather than by ground shade.
 
@@ -30,10 +30,10 @@ It ships as two cuts, each **rendered natively at two resolutions**:
 
 | File                        | Palette    | Resolution  | Size   |
 |-----------------------------|------------|-------------|--------|
-| `earthrise-x08-1080p.png`   | 8 colours  | 1920×1080   | 73 KB  |
+| `earthrise-x08-1080p.png`   | 8 colours  | 1920×1080   | 74 KB  |
 | `earthrise-x08-1440p.png`   | 8 colours  | 2560×1440   | 182 KB |
 | `earthrise-x16-1080p.png`   | 16 colours | 1920×1080   | 87 KB  |
-| `earthrise-x16-1440p.png`   | 16 colours | 2560×1440   | 213 KB |
+| `earthrise-x16-1440p.png`   | 16 colours | 2560×1440   | 214 KB |
 
 The `x8` cut is restricted to black, `nord0`–`nord2` and four of the Snow Storm / Frost shades: a coarser, more visible dither. The `x16` cut opens up `nord3`, the Frost blues and small hits of the Aurora accents, holding a smoother tonal falloff in the sky.
 
@@ -71,3 +71,5 @@ More Nord-themed paintings to come.
 The artwork in this directory – the *"Escape"* and *"Earthrise"* paintings – is **not** covered by the repo's MIT licence.
 It is © Michael Lundie, licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/): use and share it with attribution, but **no commercial use** and **no derivatives** (please don't redistribute modified or recoloured versions).
 The MIT `LICENSE` at the repo root covers the code only.
+
+Every file also carries its title, artist, year and licence in embedded EXIF (`ImageDescription`, `Artist`, `Copyright`), so the attribution travels with the image if it is downloaded on its own.
