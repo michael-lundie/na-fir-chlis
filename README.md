@@ -199,6 +199,14 @@ printf '[font]\nsize = 7.0\n' > ~/.config/alacritty-local.toml
 Alacritty live-reloads, so just tweak the number and save until it's right (7 suits a 1080p laptop here; bump it up for a HiDPI desktop).
 Nothing breaks if the file is missing – you only lose the per-machine size.
 
+**Per-machine qutebrowser settings.** The same idea for the browser: `config.py` sources `local.py` from the qutebrowser config directory if it is present, so machine-specific tweaks – a different start page, a zoom level that suits the display – stay out of the shared config.
+
+```bash
+echo 'c.url.start_pages = ["https://example.com"]' > ~/.config/qutebrowser/local.py
+```
+
+The file is untracked (`.gitignore` keeps everything in that directory except `config.py` out of the repo) and the source is a no-op when it is absent.
+
 **Wallpaper.** i3 doesn't set one; `feh` does. The default is my own painting, *"Escape"*, painted in 2023 and recoloured for Nord.
 It is shipped in four Polar Night grounds (`nord0`–`nord3`) in [`wallpaper/`](wallpaper/); the `nord0` cut applies on start, so a fresh clone looks complete out of the box.
 A second painting, *"Earthrise"* (2022), ships alongside it in 8- and 16-colour Nord cuts, each rendered natively at 1920×1080 and 2560×1440.

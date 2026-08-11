@@ -151,3 +151,12 @@ c.colors.webpage.preferred_color_scheme = "dark"
 # F11 toggles fullscreen so the i3 web-app launchers can fullscreen the new
 # window the same way they do for other browsers.
 config.bind("<F11>", "fullscreen")
+
+# --- Machine-local overrides --------------------------------------------
+# Sources `local.py` from the config directory if it exists – per-machine
+# settings (a different start page, a machine-specific zoom) that shouldn't be
+# shared across machines. Untracked, and a no-op when the file is absent.
+import os.path  # noqa: E402 (qutebrowser runs this file top-to-bottom)
+
+if os.path.exists(os.path.join(str(config.configdir), "local.py")):
+    config.source("local.py")
