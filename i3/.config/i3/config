@@ -26,6 +26,13 @@ exec --no-startup-id nm-applet
 # IBus (Japanese input) – only starts if installed (see install.sh --jp)
 
 exec --no-startup-id sh -c 'command -v ibus-daemon >/dev/null 2>&1 && ibus-daemon -drx'
+
+# Workspace-to-output routing. The script below writes the assignments into the
+# fragment included here and restarts i3 to load them – they have to arrive as
+# config, because i3 silently discards the `output` clause when the same line is
+# sent over IPC. The include is a no-op while the fragment does not yet exist.
+
+include ~/.config/i3/workspace-outputs.conf
 exec_always --no-startup-id ~/.local/bin/i3-workspace-outputs.sh
 
 # Wallpaper: a per-machine choice (~/.fehbg, written by `feh --bg-*`) wins;

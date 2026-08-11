@@ -44,7 +44,7 @@ The setup in use – Nord-themed WebStorm on the left (theme not included):
 ## Features
 
 - **Window manager:** i3 with gaps, a clean borderless layout, and (optional) IBus Japanese-input toggles.
-- **Workspace routing:** when exactly two monitors are connected, odd-numbered workspaces go to the secondary display and even-numbered workspaces go to the primary display.
+- **Workspace routing:** when exactly two monitors are active, odd-numbered workspaces go to the secondary display and even-numbered workspaces go to the primary display.
 - **Status bar:** i3blocks with custom Nord-themed scripts – battery, volume, memory, network/VPN monitor, auth-failure watch, and a built-in pomodoro timer.
 - **Terminal:** Alacritty with a Nord colour scheme and FiraCode Nerd Font, plus a Nord-themed `fastfetch` config for an on-demand system summary.
 - **Launcher:** dmenu, themed with the Nord palette and FiraCode Nerd Font to match the bar.
@@ -126,7 +126,11 @@ To remove the symlinks again:
 > Edit `set $webapp_url https://lundie.io` in `i3/.config/i3/config` to point at your own dashboard/webmail.
 > All other bindings are stock i3 defaults plus the `resize` mode – see the comments in the config.
 
-If exactly two monitors are connected, `~/.local/bin/i3-workspace-outputs.sh` assigns odd-numbered workspaces to the non-primary output and even-numbered workspaces to the primary output at i3 startup and restart.
+If exactly two monitors are active, `~/.local/bin/i3-workspace-outputs.sh` assigns odd-numbered workspaces to the non-primary output and even-numbered workspaces to the primary output, at i3 startup and restart.
+
+Monitors are counted from `xrandr --listmonitors` rather than from connected outputs, because RandR monitors are what i3 itself routes by – so a single output split with `xrandr --setmonitor` correctly counts as two.
+The assignments are written to `~/.config/i3/workspace-outputs.conf`, which the i3 config includes; that file is generated per machine and is not tracked.
+i3 only honours `workspace <name> output <output>` as a configuration directive – sent over IPC, the `output` clause is discarded and i3 still reports success – so the script writes config and restarts i3, guarding the restart so it only fires when the assignments actually change.
 
 ## i3blocks status scripts
 
