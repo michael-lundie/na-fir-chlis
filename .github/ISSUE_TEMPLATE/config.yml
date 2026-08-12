@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Wallpaper licence and what is already shipped
+    url: https://github.com/michael-lundie/na-fir-chlis/blob/main/wallpaper/README.md
+    about: Check here first – the size you want may already be in the repo.

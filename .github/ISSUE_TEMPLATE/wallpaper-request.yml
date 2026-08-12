@@ -1,0 +1,76 @@
+name: Wallpaper size request
+description: Ask for one of the paintings in a resolution that is not already shipped.
+title: "[Wallpaper] "
+labels:
+  - wallpaper
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The repo ships the versions I use myself, so there is a good chance your
+        panel is not among them. Tell me the painting and the resolution and I
+        will render it – the result goes onto the `wallpapers-extra` release
+        rather than into the repo, so the clone stays small.
+
+        Both paintings are my own work, under
+        [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+        Requesting a size is not a licence change: use it on your own machines
+        freely, but please do not redistribute it or post it as your own.
+
+  - type: dropdown
+    id: cut
+    attributes:
+      label: Which painting and colour treatment?
+      description: Each painting has its own Nord treatments – pick the one you want rendered.
+      options:
+        - Escape – nord0 (darkest ground)
+        - Escape – nord1
+        - Escape – nord2
+        - Escape – nord3 (lightest ground)
+        - Earthrise – 8 colours
+        - Earthrise – 16 colours
+        - Not sure – pick whatever suits the size
+    validations:
+      required: true
+
+  - type: input
+    id: resolution
+    attributes:
+      label: Resolution
+      description: >-
+        Width by height, in pixels. Anything is fine – ultrawide, portrait,
+        multi-monitor spans, phone. If you want several, list them all.
+      placeholder: 3440x1440
+    validations:
+      required: true
+
+  - type: input
+    id: display
+    attributes:
+      label: Display (optional)
+      description: >-
+        The monitor or device, if you know it. It helps me judge how much of the
+        composition to keep when the aspect ratio is a long way from the original.
+      placeholder: LG 34GN850 ultrawide, or Pixel 8
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else? (optional)
+      description: >-
+        Say so if you would rather the composition were cropped than extended,
+        or if you want more empty ground on one side for desktop icons.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: >-
+            I understand the artwork is CC BY-NC-ND 4.0 – free for me to use,
+            not to redistribute or sell.
+          required: true
