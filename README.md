@@ -47,6 +47,7 @@ The setup in use – Nord-themed WebStorm on the left (theme not included):
 - **Workspace routing:** when exactly two monitors are active, odd-numbered workspaces go to the secondary display and even-numbered workspaces go to the primary display.
 - **Status bar:** i3blocks with custom Nord-themed scripts – battery, volume, memory, network/VPN monitor, auth-failure watch, and a built-in pomodoro timer.
 - **Terminal:** Alacritty with a Nord colour scheme and FiraCode Nerd Font, plus a Nord-themed `fastfetch` config for an on-demand system summary.
+  xterm gets the same palette through `x/.Xresources`, merged at session start – so the fallback terminal matches rather than glaring white.
 - **Launcher:** dmenu, themed with the Nord palette and FiraCode Nerd Font to match the bar.
 - **Markdown:** a hand-built Nord [glamour](https://github.com/charmbracelet/glamour) stylesheet, exported once through `GLAMOUR_STYLE` so glow, `gh`, and `glab` all render Nord.
   The export lives in `x/.xinitrc`, so it covers everything launched from the i3 session – bare TTYs and SSH logins won't pick it up.
@@ -71,7 +72,7 @@ Each top-level directory is a Stow *package* – its layout mirrors `$HOME`:
 | `bin/`              | `.local/bin/*.sh` (status blocks, pomodoro, ...) |
 | `nano/`             | `.config/nano/nanorc`                            |
 | `glow/`             | `.config/glow/glow.yml` + `nord.json`            |
-| `x/`                | `.xinitrc`                                       |
+| `x/`                | `.xinitrc` + `.Xresources`                       |
 
 ## Installation
 

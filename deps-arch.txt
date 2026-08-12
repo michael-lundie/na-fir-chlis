@@ -15,6 +15,11 @@ dmenu
 
 ## --- Terminal + notifications ---
 alacritty
+# xterm is the fallback terminal, themed to match via x/.Xresources. xorg-xrdb
+# merges that file in x/.xinitrc; both are optional – drop them and the session
+# still comes up.
+xterm
+xorg-xrdb
 dunst
 libnotify
 

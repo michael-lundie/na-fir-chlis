@@ -8,6 +8,16 @@ if command -v ibus-daemon >/dev/null 2>&1; then
     export XMODIFIERS=@im=ibus
 fi
 
+# X resources – the Nord xterm palette. A machine-local ~/.Xresources.local is
+# merged last when present, the way Alacritty, qutebrowser and i3 take their
+# per-machine overrides; it usually only carries faceSize. Both are skipped
+# silently when absent, and xterm reads the database when it starts, so this has
+# to run before i3 does.
+if command -v xrdb >/dev/null 2>&1; then
+    [ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
+    [ -f "$HOME/.Xresources.local" ] && xrdb -merge "$HOME/.Xresources.local"
+fi
+
 # Nord theme for every glamour-based markdown renderer (glow, gh, glab).
 # One stylesheet, one source of truth – see glow/.config/glow/nord.json.
 export GLAMOUR_STYLE="$HOME/.config/glow/nord.json"

@@ -1,0 +1,78 @@
+! Na Fir-Chlis – a Nord i3wm theme · lundie.io
+!
+! X resources – xterm, themed to match the Alacritty palette exactly.
+! Merged by x/.xinitrc at session start; a machine-local ~/.Xresources.local is
+! merged after it, so per-machine settings (usually faceSize, which varies with
+! monitor DPI) stay out of the repo.
+!
+! Nothing here is read at runtime – xterm samples the database when it starts.
+! After editing, run `xrdb -merge ~/.Xresources`; already-open windows keep the
+! colours they launched with.
+!
+! Resources are set on the XTerm class with a loose binding, so they reach the
+! scrollbar and menus as well as the terminal itself. `utf8` is on, which is the
+! only thing uxterm would have bought us – plain xterm is enough.
+
+! --- Nord palette – canonical · https://www.nordtheme.com/ -------------------
+! Polar Night nord0 as the ground, Snow Storm nord4 as the text.
+
+XTerm*background:         #2E3440
+XTerm*foreground:         #D8DEE9
+XTerm*cursorColor:        #D8DEE9
+
+! Selection: Snow Storm nord6 on Polar Night nord2. Both have to be set –
+! xterm falls back to reverse video when highlightTextColor is missing.
+
+XTerm*highlightColor:     #434C5E
+XTerm*highlightTextColor: #ECEFF4
+
+! Normal – Aurora for the six hues, Polar Night nord1 as black.
+
+XTerm*color0:             #3B4252
+XTerm*color1:             #BF616A
+XTerm*color2:             #A3BE8C
+XTerm*color3:             #EBCB8B
+XTerm*color4:             #81A1C1
+XTerm*color5:             #B48EAD
+XTerm*color6:             #88C0D0
+XTerm*color7:             #E5E9F0
+
+! Bright – Nord has no brighter Aurora, so the six hues repeat and only the
+! greys and cyan shift. That is the palette behaving as designed, not an
+! oversight: nord3 lifts black, nord6 lifts white, nord7 lifts cyan.
+
+XTerm*color8:             #4C566A
+XTerm*color9:             #BF616A
+XTerm*color10:            #A3BE8C
+XTerm*color11:            #EBCB8B
+XTerm*color12:            #81A1C1
+XTerm*color13:            #B48EAD
+XTerm*color14:            #8FBCBB
+XTerm*color15:            #ECEFF4
+
+! --- Font -------------------------------------------------------------------
+! FiraCode Nerd Font, matching Alacritty and the bar. faceSize is set here
+! rather than left out – xterm has no graceful "unset" – so override it in
+! ~/.Xresources.local on a machine where 12pt is wrong.
+
+XTerm*faceName:           FiraCode Nerd Font
+XTerm*faceSize:           12
+
+! --- Behaviour --------------------------------------------------------------
+! termName advertises 256 colours, without which the palette above is wasted.
+! internalBorder matches the 8px padding set in alacritty.toml. bellIsUrgent
+! sets the window urgency hint, which the i3 bar picks up as a workspace
+! highlight.
+!
+! Note that xrdb runs this file through cpp, so a stray apostrophe in a comment
+! is read as an unterminated string and warns on every session start. Keep the
+! prose free of them.
+
+XTerm*termName:           xterm-256color
+XTerm*utf8:               true
+XTerm*internalBorder:     8
+XTerm*scrollBar:          false
+XTerm*saveLines:          10000
+XTerm*metaSendsEscape:    true
+XTerm*selectToClipboard:  true
+XTerm*bellIsUrgent:       true
