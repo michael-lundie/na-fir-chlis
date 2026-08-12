@@ -196,6 +196,14 @@ bindsym Shift+Print exec scrot -s -f $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%
 bindsym Ctrl+Print exec scrot -u $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
 bindsym Mod1+Print exec scrot -s -f $screenshot_dir/screenshot_%Y-%m-%d_%H-%M-%S.png && notify-send 'Screenshot taken'
 
+# Machine-local overrides. Anything in the file below is layered on top of this
+# config – a per-machine keybinding, an extra assignment, a different launcher –
+# and stays out of the repo, the same way qutebrowser's local.py does. i3 is
+# silent when the file is absent, so this is a no-op on a fresh clone. It comes
+# last so every variable set above ($mod, $menu, $browser …) is in scope.
+
+include ~/.config/i3/local.conf
+
 # Bar
 bar {
     status_command i3blocks

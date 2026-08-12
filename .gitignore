@@ -24,6 +24,9 @@ __pycache__/
 # Local pre-publish hygiene script (author tooling, not part of the theme).
 check.sh
 
+# Local working notes / scratch markdown — author drafts, not part of the theme.
+md/
+
 # qutebrowser writes runtime state (autoconfig.yml, history, sessions, cache)
 # into its config dir. If Stow folds the package into a symlink, that state
 # lands in the repo – track only the hand-written config.py.
